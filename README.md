@@ -1,6 +1,6 @@
 ![Screenshot](https://raw.github.com/OttoAllmendinger/gnome-shell-imgur/master/data/screenshot.png)
 
-Uploads screenshots directly to imgur.com and displays URL.
+Uploads screenshots directly to CloudApp and displays URL.
 
 ## Installation
 
