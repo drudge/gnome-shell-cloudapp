@@ -12,6 +12,8 @@ const Gio = imports.gi.Gio;
 const Meta = imports.gi.Meta;
 const Shell = imports.gi.Shell;
 
+const Util = imports.misc.util;
+
 const Main = imports.ui.main;
 
 const Gettext = imports.gettext.domain('gnome-shell-extensions');
@@ -25,14 +27,10 @@ const Uploader = Local.imports.uploader;
 const Indicator = Local.imports.indicator;
 const Selection = Local.imports.selection;
 const Notifications = Local.imports.notifications;
-
 const Convenience = Local.imports.convenience;
 
-
-
-
 const Extension = new Lang.Class({
-  Name: "ImgurUploader",
+  Name: "CloudAppUploader",
 
   _init: function () {
     this.settings = Convenience.getSettings();
@@ -132,12 +130,36 @@ const Extension = new Lang.Class({
   _selectDesktop: function () {
     this._startSelection(new Selection.SelectionDesktop());
   },
+  
+  _openMyCloudApp: function() {
+    Util.spawn(['x-www-browser', 'http://my.cl.ly']);
+  },
+  
+  _showSettings: function () {
+    let _appSys = Shell.AppSystem.get_default();
+    let _gsmApp = _appSys.lookup_app('gnome-system-monitor.desktop');
+    let _gsmPrefs = _appSys.lookup_app('gnome-shell-extension-prefs.desktop');
+    let item;
+
+    if (_gsmPrefs.get_state() == _gsmPrefs.SHELL_APP_STATE_RUNNING){
+        _gsmPrefs.activate();
+    } else {
+        _gsmPrefs.launch(global.display.get_current_time_roundtrip(),
+                         [Local.metadata.uuid], -1, null);
+    }
+  },
 
   _uploadScreenshot: function (fileName, deleteAfterUpload) {
-    let uploader = new Uploader.ImgurUploader();
-    // let uploader = new Uploader.DummyUploader();
-
+    let email = this.settings.get_string(Config.CloudAppEmail);
+    let password = this.settings.get_string(Config.CloudAppPassword);
     let notification = this._notificationService.make();
+        
+    if (!email || !password) {
+      this._notificationService.setError(notification, 'No credentials specified');
+      return;
+    }
+    
+    let uploader = new Uploader.CloudAppUploader(email, password);
 
     let cleanup = function () {
       if (deleteAfterUpload) {
@@ -154,7 +176,7 @@ const Extension = new Lang.Class({
 
     uploader.connect('done',
         function (obj, data) {
-          this._notificationService.setFinished(notification, data.link);
+          this._notificationService.setFinished(notification, data.url);
           cleanup();
         }.bind(this)
     );
@@ -165,7 +187,6 @@ const Extension = new Lang.Class({
           cleanup();
         }.bind(this)
     );
-
     uploader.upload(fileName);
   },
 
@@ -174,7 +195,9 @@ const Extension = new Lang.Class({
     let dispatch = {
       'select-area': this._selectArea.bind(this),
       'select-window': this._selectWindow.bind(this),
-      'select-desktop': this._selectDesktop.bind(this)
+      'select-desktop': this._selectDesktop.bind(this),
+      'show-settings': this._showSettings.bind(this),
+      'show-my-cloudapp': this._openMyCloudApp.bind(this)
     };
 
     let f = dispatch[action] || function () {

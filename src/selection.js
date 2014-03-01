@@ -16,7 +16,7 @@ const Main = imports.ui.main;
 const Gettext = imports.gettext.domain('gnome-shell-extensions');
 const _ = Gettext.gettext;
 
-const FileTemplate = 'gnome-shell-imgur-XXXXXX.png';
+const FileTemplate = 'gnome-shell-cloudapp-XXXXXX.png';
 
 
 const ScreenshotWindowIncludeCursor = false;
@@ -211,7 +211,7 @@ Signals.addSignalMethods(Capture.prototype);
 
 
 const SelectionArea = new Lang.Class({
-  Name: "ImgurUploader.SelectionArea",
+  Name: "CloudAppUploader.SelectionArea",
 
   _init: function () {
     this._mouseDown = false;
@@ -264,7 +264,7 @@ Signals.addSignalMethods(SelectionArea.prototype);
 
 
 const SelectionWindow = new Lang.Class({
-  Name: "ImgurUploader.SelectionWindow",
+  Name: "CloudAppUploader.SelectionWindow",
 
   _init: function () {
     this._windows = global.get_window_actors();
@@ -320,7 +320,7 @@ Signals.addSignalMethods(SelectionWindow.prototype);
 
 
 const SelectionDesktop = new Lang.Class({
-  Name: "ImgurUploader.SelectionDesktop",
+  Name: "CloudAppUploader.SelectionDesktop",
 
   _init: function () {
     this._windows = global.get_window_actors();

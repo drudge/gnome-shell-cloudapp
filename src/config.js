@@ -1,8 +1,8 @@
 // vi: sts=2 sw=2 et
 
-const IndicatorName = 'de.ttll.ImgurUploader';
+const IndicatorName = 'com.weborate.gnome.CloudAppUploader';
 
-const SettingsSchema = 'org.gnome.shell.extensions.imgur';
+const SettingsSchema = 'org.gnome.shell.extensions.cloudapp';
 
 const KeyEnableIndicator = 'enable-indicator';
 const KeyClickAction = 'click-action'
@@ -11,6 +11,9 @@ const KeyShortcuts = [
   'shortcut-select-window',
   'shortcut-select-desktop'
 ];
+
+const CloudAppEmail = 'email';
+const CloudAppPassword = 'password';
 
 const ClickActions = {
   SHOW_MENU: 0,

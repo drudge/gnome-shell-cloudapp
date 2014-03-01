@@ -14,7 +14,7 @@ function getSettings(schema, path) {
     return new Gio.Settings({ settings_schema: schemaObj });
 }
 
-let schema = "org.gnome.shell.extensions.imgur";
+let schema = "org.gnome.shell.extensions.cloudapp";
 let path = 'src/schemas/';
 let settings = getSettings(schema, path);
 

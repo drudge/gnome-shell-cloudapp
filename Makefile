@@ -1,6 +1,6 @@
 .PHONY: all schemas zipfile
 
-SCHEMA = org.gnome.shell.extensions.imgur.gschema.xml
+SCHEMA = org.gnome.shell.extensions.cloudapp.gschema.xml
 
 SOURCE = src/*.js \
 		 src/stylesheet.css \
@@ -8,9 +8,9 @@ SOURCE = src/*.js \
 		 src/icons \
 		 src/schemas/*
 
-ZIPFILE = gnome-shell-imgur.zip
+ZIPFILE = gnome-shell-cloudapp.zip
 
-UUID = gnome-shell-imgur@ttll.de
+UUID = gnome-shell-cloudapp@weborate.com
 EXTENSION_PATH = $(HOME)/.local/share/gnome-shell/extensions/$(UUID)
 
 all: archive

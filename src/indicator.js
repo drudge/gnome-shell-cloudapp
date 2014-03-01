@@ -17,14 +17,11 @@ const Local = ExtensionUtils.getCurrentExtension();
 const Config = Local.imports.config;
 
 
-const DefaultIcon = 'imgur-uploader-symbolic';
-const HoverIcon = 'imgur-uploader-color';
-
-
-
+const DefaultIcon = 'cloudapp-uploader-symbolic';
+const HoverIcon = 'cloudapp-uploader-symbolic';
 
 const Indicator = new Lang.Class({
-  Name: "ImgurUploader.Indicator",
+  Name: "CloudAppUploader.Indicator",
   Extends: PanelMenu.Button,
 
   _init: function (extension) {
@@ -77,7 +74,9 @@ const Indicator = new Lang.Class({
     const items = [
       ["select-area", _("Select Area")],
       ["select-window", _("Select Window")],
-      ["select-desktop", _("Select Desktop")]
+      ["select-desktop", _("Select Desktop")],
+      ["show-my-cloudapp", _("My CloudApp")],
+      ["show-settings", _("Uploader Settings")]
     ];
 
     for each (let [action, title] in items) {
@@ -86,6 +85,9 @@ const Indicator = new Lang.Class({
         'activate',
         this._extension.onAction.bind(this._extension, action)
       );
+      if (~[ "show-my-cloudapp", "show-settings"].indexOf(action)) {
+        this.menu.addMenuItem(new PopupMenu.PopupSeparatorMenuItem());
+      }
       this.menu.addMenuItem(item);
     }
   },

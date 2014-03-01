@@ -12,14 +12,14 @@ const _ = Gettext.gettext;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Local = ExtensionUtils.getCurrentExtension();
 
-const NotificationIcon = 'imgur-uploader-color';
-const NotificationSourceName = 'ImgurUploader';
+const NotificationIcon = 'cloudapp-uploader-symbolic';
+const NotificationSourceName = 'CloudAppUploader';
 
 
 
 
 const NotificationService = new Lang.Class({
-  Name: "ImgurUploader.NotificationService",
+  Name: "CloudAppUploader.NotificationService",
 
   _init: function () {
     this._notificationSource = new MessageTray.Source(
