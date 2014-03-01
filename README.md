@@ -1,4 +1,4 @@
-Uploads screenshots directly to CloudApp and displays URL.
+Uploads screenshots directly to [CloudApp](http://getcloudapp.com) and displays URL.
 
 ## Installation
 
