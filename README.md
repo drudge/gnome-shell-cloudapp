@@ -6,15 +6,15 @@ Uploads screenshots directly to imgur.com and displays URL.
 
 ### Via extensions.gnome.org
 
-The latest reviewed version can be found at [GNOME Shell Extensions](https://extensions.gnome.org/extension/683/imgur-screenshot-uploader/).
+The latest reviewed version can be found at [GNOME Shell Extensions](https://extensions.gnome.org/extension/787/cloudapp-screenshot-uploader/).
 
 ### Via github.com
 
 The latest development version can be installed manually with these commands:
 
 ```sh
-git clone https://github.com/OttoAllmendinger/gnome-shell-imgur.git
-cd gnome-shell-imgur
+git clone https://github.com/drudge/gnome-shell-cloudapp.git
+cd gnome-shell-cloudapp
 make install
 ```
 
@@ -23,14 +23,10 @@ gnome-tweak-tool.
 
 ## Disclaimer
 
-The Imgur logo and "IMGUR" are trademarks of Imgur LLC and are used here for
-informational purposes only. My application, gnome-shell-imgur, is not
-affiliated with Imgur and has not been reviewed or approved by Imgur.
+The CloudApp logo and "CloudApp" are trademarks of Linebreak LLC and are used here for
+informational purposes only. My application, gnome-shell-cloudapp, is not
+affiliated with CloudApp and has not been reviewed or approved by Linebreak.
 
 ## TODO
 
 * Make icon drop site for local images
-* Allow making window and desktop screenshots
-
-Bitcoin tip address 17t3qB7fXnYpgfqvrh6gcwJBWWM6reYfoS
-
